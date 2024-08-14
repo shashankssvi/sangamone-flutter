@@ -1,3 +1,4 @@
+import 'package:app1/screen6.dart';
 import 'package:flutter/material.dart';
 import 'chess1.dart';
 
@@ -9,6 +10,7 @@ class Screen5 extends StatelessWidget {
     return MaterialApp(
       home:Chess1(),
       debugShowCheckedModeBanner: false,
+
     );
   }
 }
@@ -45,6 +47,12 @@ class _Chess1State extends State<Chess1> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Screen5 - Chess Board")),
+        actions: [
+          InkWell(child: Icon(Icons.arrow_forward),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Colors1()));
+            },)
+        ],
       ),
       body: Column(
         children: [
