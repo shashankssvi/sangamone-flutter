@@ -1,4 +1,4 @@
-import 'package:app1/screen6.dart';
+import 'package:app1/screen6a.dart';
 import 'package:flutter/material.dart';
 import 'chess1.dart';
 
@@ -10,7 +10,6 @@ class Screen5 extends StatelessWidget {
     return MaterialApp(
       home:Chess1(),
       debugShowCheckedModeBanner: false,
-
     );
   }
 }
@@ -32,12 +31,22 @@ class _Chess1State extends State<Chess1> {
   };
 
   var list1 = Chess.list1[0];
+  var list2 = [];
 
   nextstep(a){
       var b = list1[a];
       setState(() {
-        dict[b[0]]=dict[b[1]];
-        dict[b[1]]=null;
+        if (dict[b[1]]==null){
+          dict[b[1]]=dict[b[0]];
+          dict[b[0]]=null;
+
+        }
+        else{
+          dict[b[1]]=dict[b[0]];
+          list2.add(dict[b[0]]);
+          dict[b[0]]=null;
+          print(list2);
+        }
       });
   }
   int count = 0;
@@ -82,6 +91,9 @@ class _Chess1State extends State<Chess1> {
                   );
                 }),
           ),
+          StatefulBuilder(builder: (context,setState){
+            return Text("${list2}");
+          }),
           Align(
             alignment: Alignment.topCenter,
             child: ElevatedButton(

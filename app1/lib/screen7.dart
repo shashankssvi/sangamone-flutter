@@ -1,4 +1,3 @@
-import 'package:app1/main.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
@@ -8,49 +7,65 @@ class Screen7 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Details1(),
+      home: System1(),
     );
   }
 }
 
-class Details1 extends StatefulWidget {
-  const Details1({super.key});
+class System1 extends StatefulWidget {
+  const System1({super.key});
 
   @override
-  State<Details1> createState() => _Details1State();
+  State<System1> createState() => _System1State();
 }
 
-class _Details1State extends State<Details1> {
+class _System1State extends State<System1> {
 
-  getdetails()async{
-    final deviceinfo =await DeviceInfoPlugin().androidInfo;
-    print(deviceinfo.data);
-  }
+  late Future<dynamic> map1;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getdetails();
+    map1 = getdeviceinfo();
+  }
+  getdeviceinfo() async{
+    var device1 = await DeviceInfoPlugin().androidInfo;
+    var info1 = device1.data;
+    return info1;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          InkWell(
-            child: Icon(Icons.arrow_forward),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen1()));
-            },
-          )
-        ],
-      ),
-      body: ListView(
-        children: [
+        title: Text("System parameters"),
 
-        ],
+      ),
+      body: Container(
+        child: FutureBuilder(future: map1, builder: (context,snapshot){
+          Map<dynamic,dynamic> data = snapshot.data;
+          if (snapshot.connectionState==ConnectionState.waiting){
+            return CircularProgressIndicator();
+          }
+          else if (snapshot.hasError){
+            return Text("${snapshot.error}");
+          }
+          else if (snapshot.hasData){
+            List<dynamic> a=data.keys.toList();
+            return ListView.builder(itemCount: a.length,itemBuilder: (context,index){
+              return Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("${a[index]} : ${data[a[index]]}"),
+                ),
+              );
+            });
+          }
+          else{
+            return Text("no data found");
+          }
+        }),
       ),
     );
   }

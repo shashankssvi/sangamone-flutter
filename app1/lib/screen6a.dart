@@ -1,8 +1,8 @@
-import 'package:app1/screen7.dart';
+import 'package:app1/screen6b.dart';
 import 'package:flutter/material.dart';
 
-class Screen6 extends StatelessWidget {
-  const Screen6({super.key});
+class Screen6a extends StatelessWidget {
+  const Screen6a({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,8 @@ class _Colors1State extends State<Colors1> {
   int dd = list1.first;
 
   /*static List<int> color1 = [0,15,31,63,127,255];*/
-  static List<int> color1 = [0,7,15,23,31,47,63,95,127,191,255];
+  //static List<int> color1 = [0,7,15,23,31,47,63,95,127,191,255];
+  static List<int> color1 = [0,7,15,23,28,31,47,63,95,127,191,255];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class _Colors1State extends State<Colors1> {
           InkWell(
             child: Icon(Icons.arrow_forward),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen7()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Details1()));
             },
           )
         ],
