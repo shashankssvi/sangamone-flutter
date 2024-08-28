@@ -1,3 +1,4 @@
+import 'package:app1/screen8.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
@@ -40,11 +41,18 @@ class _System1State extends State<System1> {
     return Scaffold(
       appBar: AppBar(
         title: Text("System parameters"),
-
+        actions: [
+          InkWell(
+            child: Icon(Icons.arrow_forward),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Sysparam()));
+            },
+          )
+        ],
       ),
       body: Container(
         child: FutureBuilder(future: map1, builder: (context,snapshot){
-          Map<dynamic,dynamic> data = snapshot.data;
+
           if (snapshot.connectionState==ConnectionState.waiting){
             return CircularProgressIndicator();
           }
@@ -52,6 +60,7 @@ class _System1State extends State<System1> {
             return Text("${snapshot.error}");
           }
           else if (snapshot.hasData){
+            Map<dynamic,dynamic> data = snapshot.data;
             List<dynamic> a=data.keys.toList();
             return ListView.builder(itemCount: a.length,itemBuilder: (context,index){
               return Card(
