@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:app1/screen2.dart';
 
 class Screen1 extends StatelessWidget {
     const Screen1({super.key});
     @override
     Widget build(BuildContext context) {
-        return MaterialApp(
+        return const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Screen1(),
       );
@@ -31,14 +30,14 @@ class _Demo1State extends State<Demo1> {
         leading: InkWell(
             child: const Icon(Icons.arrow_back),
             onTap: () {
-            Navigator.push(context,MaterialPageRoute(builder: (context) => Demo1()));
+            Navigator.push(context,MaterialPageRoute(builder: (context) => const Demo1()));
             },
         ),
         actions: [
             InkWell(
-                child: Icon(Icons.arrow_forward),
+                child: const Icon(Icons.arrow_forward),
                 onTap: () {
-            Navigator.push(context,MaterialPageRoute(builder: (context) => Demo1()));
+            Navigator.push(context,MaterialPageRoute(builder: (context) => const Demo1()));
             },
                 ),
             ],
@@ -46,7 +45,7 @@ class _Demo1State extends State<Demo1> {
       body:ListView.builder(
           itemCount: imgs.length,
           itemBuilder: (context, index) {
-            return Text('hellow');
+            return const Text('hellow');
           })
       ,
       );

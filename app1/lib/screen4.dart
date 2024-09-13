@@ -9,7 +9,7 @@ class Screen4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Richtext1(),
     );
@@ -29,29 +29,29 @@ class _Richtext1State extends State<Richtext1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Screen4 - Cat")),
+        title: const Center(child: Text("Screen4 - Cat")),
         actions: [
           InkWell(
-            child: Icon(Icons.arrow_forward),
+            child: const Icon(Icons.arrow_forward),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen5()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const Screen5()));
             },
           )
         ],
       ),
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
             RichText(
               text: TextSpan(
                 children: [
-                  TextSpan(text: "${Utility1.list1[0]}\n",style: TextStyle(fontSize: 40),recognizer: TapGestureRecognizer()..onTap=(){
+                  TextSpan(text: "${Utility1.list1[0]}\n",style: const TextStyle(fontSize: 40),recognizer: TapGestureRecognizer()..onTap=(){
                     setState(() {
                       a==true?a=false:a=true;
                     });
                   }),
-                ],style: TextStyle(color: Colors.black,),
+                ],style: const TextStyle(color: Colors.black,),
               ),
             ),
             a?Container(
@@ -62,9 +62,9 @@ class _Richtext1State extends State<Richtext1> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.home),
+      floatingActionButton: FloatingActionButton(child: const Icon(Icons.home),
           onPressed: ()=>
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Screen1()))),
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Screen1()))),
     );
   }
 }

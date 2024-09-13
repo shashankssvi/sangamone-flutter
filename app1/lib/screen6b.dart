@@ -1,4 +1,3 @@
-import 'package:app1/main.dart';
 import 'package:app1/screen7.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -8,7 +7,7 @@ class Screen6b extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Details1(),
     );
@@ -93,9 +92,9 @@ class _Details1State extends State<Details1> {
       appBar: AppBar(
         actions: [
           InkWell(
-            child: Icon(Icons.arrow_forward),
+            child: const Icon(Icons.arrow_forward),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>System1()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const System1()));
             },
           )
         ],

@@ -7,7 +7,7 @@ class Screen7 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: System1(),
     );
   }
@@ -40,12 +40,12 @@ class _System1State extends State<System1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("System parameters"),
+        title: const Text("System parameters"),
         actions: [
           InkWell(
-            child: Icon(Icons.arrow_forward),
+            child: const Icon(Icons.arrow_forward),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Sysparam()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const Sysparam()));
             },
           )
         ],
@@ -54,7 +54,7 @@ class _System1State extends State<System1> {
         child: FutureBuilder(future: map1, builder: (context,snapshot){
 
           if (snapshot.connectionState==ConnectionState.waiting){
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
           else if (snapshot.hasError){
             return Text("${snapshot.error}");
@@ -72,7 +72,7 @@ class _System1State extends State<System1> {
             });
           }
           else{
-            return Text("no data found");
+            return const Text("no data found");
           }
         }),
       ),

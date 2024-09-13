@@ -35,21 +35,21 @@ class _GridView1State extends State<GridView1> {
         leading: InkWell(
           child: const Icon(Icons.arrow_back),
           onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Screen2()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Screen2()));
           },
         ),
         actions: [
           InkWell(
             child: const Icon(Icons.arrow_forward),
             onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Richtext1()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Richtext1()));
             },
           )
         ],
       ),
       body: Container(
           child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,mainAxisSpacing: 12),
               itemCount: list1.length,
               itemBuilder: (context,index){

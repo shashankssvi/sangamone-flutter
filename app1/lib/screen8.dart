@@ -6,7 +6,7 @@ class Screen8 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Sysparam(),
     );
@@ -28,12 +28,12 @@ class _SysparamState extends State<Sysparam> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Screen8 - System"),
+        title: const Text("Screen8 - System"),
         actions: [
           InkWell(
-            child: Icon(Icons.arrow_forward),
+            child: const Icon(Icons.arrow_forward),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Imghistory()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const Imghistory()));
             },
           )
         ],
@@ -42,9 +42,9 @@ class _SysparamState extends State<Sysparam> {
         return Card(
             child: ExpansionTile(title: Text(list1[index]),
             children: [
-              ListView.builder(physics: NeverScrollableScrollPhysics(),shrinkWrap: true,itemCount: 10,itemBuilder: (context,ind){
+              ListView.builder(physics: const NeverScrollableScrollPhysics(),shrinkWrap: true,itemCount: 10,itemBuilder: (context,ind){
                 return Card(child: ListTile(
-                  title: Text("Aug 8"),
+                  title: const Text("Aug 8"),
                   leading: CircleAvatar(child: Text("${ind+1}"),),
                 )
                 );

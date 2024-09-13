@@ -6,7 +6,7 @@ class Screen6a extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Colors1(),
     );
   }
@@ -32,19 +32,19 @@ class _Colors1State extends State<Colors1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Colors"),
+        title: const Text("Colors"),
         actions: [
           InkWell(
-            child: Icon(Icons.arrow_forward),
+            child: const Icon(Icons.arrow_forward),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Details1()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const Details1()));
             },
           )
         ],
       ),
       body: ListView(
         children: [
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 45,
             child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: color1.length),itemCount: color1.length, itemBuilder:(context,index){
@@ -56,7 +56,7 @@ class _Colors1State extends State<Colors1> {
               );
             }),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 50,
             child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: color1.length),itemCount: color1.length, itemBuilder:(context,index){
@@ -68,7 +68,7 @@ class _Colors1State extends State<Colors1> {
               );
             }),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 50,
             child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:  color1.length),itemCount: color1.length, itemBuilder:(context,index){
@@ -80,7 +80,7 @@ class _Colors1State extends State<Colors1> {
               );
             }),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 50,
             child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:  color1.length),itemCount: color1.length, itemBuilder:(context,index){
@@ -92,7 +92,7 @@ class _Colors1State extends State<Colors1> {
               );
             }),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 50,
             child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:  color1.length),itemCount: color1.length, itemBuilder:(context,index){
@@ -104,7 +104,7 @@ class _Colors1State extends State<Colors1> {
               );
             }),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 50,
             child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:  color1.length),itemCount: color1.length, itemBuilder:(context,index){
@@ -116,7 +116,7 @@ class _Colors1State extends State<Colors1> {
               );
             }),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 50,
             child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:  color1.length),itemCount: color1.length, itemBuilder:(context,index){

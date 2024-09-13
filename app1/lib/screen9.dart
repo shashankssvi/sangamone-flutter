@@ -1,4 +1,6 @@
+import 'package:app1/screen10.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:photo_manager/photo_manager.dart';
 
@@ -7,7 +9,7 @@ class Screen9 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Imghistory(),
     );
   }
@@ -36,9 +38,9 @@ class _ImghistoryState extends State<Imghistory> {
   }
 
   getimages() async{
-    final getalb = await PhotoManager.getAssetPathList(type: RequestType.image,hasAll: true);
-    final album1 = getalb.first;
-    final album2 = await album1.getAssetListPaged(page: 0, size: 100);
+    final getalb = await PhotoManager.getAssetPathList(type: RequestType.image,hasAll: true,onlyAll: true);
+    final album1 = getalb.last;
+    final album2 = await album1.getAssetListPaged(page: 0, size: 1000);
     setState(() {
       list1=album2;
     });
@@ -48,13 +50,21 @@ class _ImghistoryState extends State<Imghistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Screen9 - Image photo"),
+        title: const Text("Screen9 - Image photo"),
+        actions: [
+          InkWell(
+            child: const Icon(Icons.arrow_forward),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const Latlong()));
+            },
+          )
+        ],
       ),
-      body: list1.isEmpty?Center(child: CircularProgressIndicator()):
-          GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),itemCount: list1.length, itemBuilder: (context,index){
+      body: list1.isEmpty?const Center(child: CircularProgressIndicator()):
+          ListView.builder(itemCount: list1.length, itemBuilder: (context,index){
         return FutureBuilder(future: list1[index].thumbnailData, builder: (context,snapshot){
           if (snapshot.connectionState==ConnectionState.waiting){
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           else if(snapshot.hasError){
             return Text("${snapshot.error}");
@@ -63,11 +73,17 @@ class _ImghistoryState extends State<Imghistory> {
             var data = snapshot.data;
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.memory(data!,fit: BoxFit.fill,),
+              child: Card(
+                  child: ListTile(
+                    title: Text("${list1[index].title}\n ${list1[index].size}\n ${DateFormat("yyyy-MM-dd HH:mm").format(list1[index].createDateTime)}"),
+                    subtitle: Text("${index+1}"),
+                    leading: Image.memory(data!,fit: BoxFit.fill,),
+                  )
+              ),
             );
           }
           else {
-            return Text("data");
+            return const Text("data");
           }
         });
         }),

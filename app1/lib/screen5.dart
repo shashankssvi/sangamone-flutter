@@ -7,7 +7,7 @@ class Screen5 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home:Chess1(),
       debugShowCheckedModeBanner: false,
     );
@@ -55,11 +55,11 @@ class _Chess1State extends State<Chess1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Screen5 - Chess Board")),
+        title: const Center(child: Text("Screen5 - Chess Board")),
         actions: [
-          InkWell(child: Icon(Icons.arrow_forward),
+          InkWell(child: const Icon(Icons.arrow_forward),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Colors1()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const Colors1()));
             },)
         ],
       ),
@@ -68,7 +68,7 @@ class _Chess1State extends State<Chess1> {
           Expanded(
             child: GridView.builder(
                 itemCount: 64,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 8),
                 itemBuilder: (context,index){
                   int row = index ~/ 8;
@@ -80,9 +80,9 @@ class _Chess1State extends State<Chess1> {
                       color: (row+col)%2==0?Colors.grey:Colors.white,
                       child: Center(
                           child: RichText(
-                  text: TextSpan(style: TextStyle(color: Colors.black),
-                  children: [TextSpan(text: "${index}\n",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10)),
-                    TextSpan(text: dict[index]==null?null:"${dict[index]}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30)),
+                  text: TextSpan(style: const TextStyle(color: Colors.black),
+                  children: [TextSpan(text: "$index\n",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 10)),
+                    TextSpan(text: dict[index]==null?null:"${dict[index]}",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 30)),
                   ]
                   ),
                   ),
@@ -92,12 +92,12 @@ class _Chess1State extends State<Chess1> {
                 }),
           ),
           StatefulBuilder(builder: (context,setState){
-            return Text("${list2}");
+            return Text("$list2");
           }),
           Align(
             alignment: Alignment.topCenter,
             child: ElevatedButton(
-              child: Text("Next",style: TextStyle(color: Colors.blue,fontSize: 40,fontWeight: FontWeight.bold),),
+              child: const Text("Next",style: TextStyle(color: Colors.blue,fontSize: 40,fontWeight: FontWeight.bold),),
               onPressed: (){
                 setState(() {
                   count++;
