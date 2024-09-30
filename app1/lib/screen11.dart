@@ -39,14 +39,13 @@ class _Camara1State extends State<Camara1> {
     });
   }
 
-
   ontourch()async{
     _cameraController?.setFlashMode(FlashMode.torch);
+    _cameraController?.takePicture();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _cameraController?.dispose();
     super.dispose();
   }
